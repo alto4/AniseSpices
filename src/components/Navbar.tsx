@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Shop from './Shop';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <Router>
       <nav>
