@@ -126,6 +126,7 @@ nav ul li {
 section {
   border-top: 1px solid #eee;
 }
+
 .store-section {
   /* border-top: 1px solid #eee; */
   background: #111;
@@ -135,6 +136,16 @@ section {
 .store-section h1 {
   text-align: center;
 }
+
 .store-section h1, h2 {
   text-decoration: underline #3F2326 3px;
+}
+
+.cart {
+  position: absolute;
+  right: 0;
+  top: 102px;
+  width: 320px;
+  z-index: 10000;
+  background: #3F2326;
 }

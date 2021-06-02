@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Shop from './Shop';
 import Contact from './Contact';
+import Cart from './Cart';
 
 const Navbar: React.FC = () => {
+
+  const [showCart, setShowCart] = useState(false);
   return (
     <Router>
       <nav>
@@ -29,13 +32,18 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="">
-            <i className="fa fa-shopping-cart"></i>
-            </Link> 0
+            <button className="btn btn-cart" onClick={()=> { setShowCart(!showCart)}}>
+            <i className="fa fa-shopping-cart"></i> 0
+            </button>
           </li>
         </ul>
       </nav>
 
+      
+      {showCart && (
+         <Cart/>
+      )}
+      
       <Switch>
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/contact" component={Contact} />
