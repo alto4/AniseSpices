@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Cart from './Cart';
 
-const Navbar: React.FC = () => {
+
+const Navbar: React.FC<{cartItems: any}> = ({cartItems}) => {
 
   const [showCart, setShowCart] = useState(false);
-
-  
+  console.log('props passed to navbar: ' + cartItems)
 
   return (
    <>
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <button className="btn btn-cart" onClick={()=> { setShowCart(!showCart)}}>
-            <i className="fa fa-shopping-cart"></i> 0
+            <i className="fa fa-shopping-cart"></i> {cartItems.length}
             </button>
           </li>
         </ul>
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
 
       
       {showCart && (
-         <Cart/>
+         <Cart cartItems={cartItems}/>
       )}
       
         </>

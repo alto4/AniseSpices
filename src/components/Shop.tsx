@@ -1,37 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import items from '../data/Items';
 
 
-interface Item {
-  id: number,
-  name: string,
-  price: number,
-  quantity: string,
-  imageURL: string,
-  description: string
-}
-
-const Shop: React.FC = (props: any) => {
+const Shop: React.FC<{addItem: Function}> = (props: any) => {
   
   let featuredItems = [items[0], items[1], items[2]]
 
-  const [cartItems, setCartItems]: any = useState([]);
-
   const addItemToCart = (e: any) => {
     let id = e.currentTarget.getAttribute('data-id');
-    let updatedCartItems: Array<Item> = [...cartItems, items[id]]; 
-    setCartItems(updatedCartItems);
-
+    props.addItem(items[id - 1]);
     console.log('CLICK! on item ' + items[id - 1].name)
-  
-    console.log(updatedCartItems.length);
   }
 
-  useEffect(() => {
-   // props.updateCart(cartItems);
-  })
 
-  
+
   return (
     <section className="store-section">
       <div className="container">
