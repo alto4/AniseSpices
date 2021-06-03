@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import items from '../data/Items';
 
 
-const Shop: React.FC = () => {
+interface Item {
+  id: number,
+  name: string,
+  price: number,
+  quantity: string,
+  imageURL: string,
+  description: string
+}
+
+const Shop: React.FC = (props: any) => {
   
   let featuredItems = [items[0], items[1], items[2]]
- 
+
+  const [cartItems, setCartItems]: any = useState([]);
+
+  const addItemToCart = (e: any) => {
+    let id = e.currentTarget.getAttribute('data-id');
+    let updatedCartItems: Array<Item> = [...cartItems, items[id]]; 
+    setCartItems(updatedCartItems);
+
+    console.log('CLICK! on item ' + items[id - 1].name)
+  
+    console.log(updatedCartItems.length);
+  }
+
+  useEffect(() => {
+   // props.updateCart(cartItems);
+  })
+
+  
   return (
     <section className="store-section">
       <div className="container">
@@ -20,8 +46,8 @@ const Shop: React.FC = () => {
             <img src={item.imageURL} alt={item.description.split('.')[0] + '.'} />
             <p>Price: ${item.price} / {item.quantity}</p>
             <div className="buttons">
-              <button className="btn btn-block"><i className="fa fa-shopping-cart"></i> Add</button>
-              <button className="btn btn-block"><i className="fa fa-list"></i> Details</button>
+              <button className="btn btn-block" data-id={item.id} onClick={addItemToCart}><i className="fa fa-shopping-cart" ></i> Add</button>
+              <button className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</button>
             </div>
           </div>)
           })}       
@@ -35,8 +61,8 @@ const Shop: React.FC = () => {
             <img src={item.imageURL} alt={item.description.split('.')[0] + '.'} />
             <p>Price: ${item.price} / {item.quantity}</p>
             <div className="buttons">
-              <button className="btn btn-block"><i className="fa fa-shopping-cart"></i> Add</button>
-              <button className="btn btn-block"><i className="fa fa-list"></i> Details</button>
+              <button className="btn btn-block" data-id={item.id} onClick={addItemToCart}><i className="fa fa-shopping-cart"></i> Add</button>
+              <button className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</button>
             </div>
           </div>)
           })}       

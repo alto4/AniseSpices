@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
-import Home from './Home';
-import Shop from './Shop';
-import Contact from './Contact';
+import { Link } from 'react-router-dom';
 import Cart from './Cart';
 
 const Navbar: React.FC = () => {
 
   const [showCart, setShowCart] = useState(false);
+
+  
+
   return (
-    <Router>
+   <>
       <nav>
         <ul>
           <li>
@@ -44,13 +44,9 @@ const Navbar: React.FC = () => {
          <Cart/>
       )}
       
-      <Switch>
-        <Route exact path="/shop" component={Shop} />
-        <Route exact path="/contact" component={Contact} />
-        <Route path="/" component={Home} />
-      </Switch>
-    </Router>
+        </>
   );
+
 };
 
 export default Navbar;
