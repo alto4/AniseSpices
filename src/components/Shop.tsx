@@ -26,7 +26,15 @@ const Shop: React.FC<{addItem: Function}> = (props: any) => {
           <div className="item-card">
             <h3>{item.name}</h3>
             <img src={item.imageURL} alt={item.description.split('.')[0] + '.'} />
-            <p>Price: ${item.price} / {item.quantity}</p>
+            <div className="product-card-price">
+              <p>Price: ${item.price} / {item.unit}</p>
+              <div className="quantity-buttons">
+                <button className="btn-decrement">-</button>
+                <span>{item.quantity}</span>
+                <button className="btn-increment">+</button>
+              </div> 
+            </div>
+             
             <div className="buttons">
               <button className="btn btn-block" data-id={item.id} onClick={addItemToCart}><i className="fa fa-shopping-cart" ></i> Add</button>
               <button className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</button>
@@ -41,7 +49,14 @@ const Shop: React.FC<{addItem: Function}> = (props: any) => {
           <div className="item-card">
             <h3>{item.name}</h3>
             <img src={item.imageURL} alt={item.description.split('.')[0] + '.'} />
-            <p>Price: ${item.price} / {item.quantity}</p>
+            <div className="product-card-price">
+              <p>Price: ${item.price} / {item.unit}</p>
+              <div className="quantity-buttons">
+                <button className="btn-decrement">-</button>
+                <span>{item.quantity}</span>
+                <button className="btn-increment">+</button>
+              </div> 
+            </div>
             <div className="buttons">
               <button className="btn btn-block" data-id={item.id} onClick={addItemToCart}><i className="fa fa-shopping-cart"></i> Add</button>
               <button className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</button>

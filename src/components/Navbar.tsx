@@ -41,7 +41,7 @@ const Navbar: React.FC<{cartItems: any}> = ({cartItems}) => {
 
       
       {showCart && (
-         <Cart cartItems={cartItems}/>
+         <Cart cartItems={cartItems} setShowCart={setShowCart} />
       )}
       
         </>
