@@ -72,9 +72,9 @@ const Shop: React.FC<{addItem: Function, setQuantity: Function, items: Array<Ite
             <div className="product-card-price">
               <p>Price: ${item.price} / {item.unit}</p>
               <div className="quantity-buttons">
-                <button className="btn-decrement" data-id={item.id} onClick={(e) => {setQuantity(item.quantity - 1); updateItemQuantity(e, item.quantity);}}>-</button>
-                <input type="number" name="quantity" data-id={item.id} onChange={(e) => { setQuantity(Number.parseInt(e.target.value.toString())); updateItemQuantity(e, item.quantity);}}/> 
-                <button className="btn-increment" data-id={item.id} onClick={(e) => {setQuantity(item.quantity + 1); updateItemQuantity(e, item.quantity);}}>+</button>
+                <button className="btn-decrement" data-id={item.id} onClick={(e) => {setItemQuantity(item.quantity - 1); updateItemQuantity(e, item.quantity -1);}}>-</button>
+                <input type="number" name="quantity" value={item.quantity} data-id={item.id} onChange={(e) => { setItemQuantity(Number.parseInt(e.target.value.toString())); updateItemQuantity(e, item.quantity);}}/> 
+                <button className="btn-increment" data-id={item.id} onClick={(e) => {setItemQuantity(item.quantity + 1); updateItemQuantity(e, item.quantity + 1);}}>+</button>
               </div> 
             </div>
             <div className="buttons">

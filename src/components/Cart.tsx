@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 interface Item {
   id: number,
@@ -10,7 +10,7 @@ interface Item {
   description: string
 }
 
-const Cart: React.FC<{cartItems: any, setShowCart: Function, updateItemQuantity: Function, setQuantity: Function, items: Array<object>, quantity: number}> = ({cartItems, setShowCart, updateItemQuantity, setQuantity, quantity}) => {
+const Cart: React.FC<{cartItems: any, setShowCart: Function, updateItemQuantity: Function, removeItem: Function, setQuantity: Function, items: Array<object>, quantity: number}> = ({cartItems, setShowCart, removeItem, updateItemQuantity, setQuantity, quantity}) => {
 
   return (
     <aside className="cart">
@@ -31,8 +31,8 @@ const Cart: React.FC<{cartItems: any, setShowCart: Function, updateItemQuantity:
                 <button className="btn-increment" data-id={item.id} onClick={(e) => { updateItemQuantity(e, item.quantity + 1);}}>+</button>
               </div> 
             </div>
-            <p>${item.quantity * item.price} <br/><small>${item.price}/{item.unit}</small></p>
-            <button className="btn-delete"><i className="fa fa-trash fa-sm"></i></button>
+            <p>${(item.quantity * item.price).toFixed(2)} <br/><small>${item.price}/{item.unit}</small></p>
+            <button className="btn-delete"  onClick={(e) => { removeItem(item.id);}}><i className="fa fa-trash fa-sm"></i></button>
           </div>
         )
       })}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Cart from './Cart';
 
 
-const Navbar: React.FC<{cartItems: any, updateItemQuantity: any, setQuantity: Function, items: any, quantity: number}> = ({cartItems, updateItemQuantity, setQuantity, items, quantity}) => {
+const Navbar: React.FC<{cartItems: any, updateItemQuantity: any, removeItem: any, setQuantity: Function, items: any, quantity: number}> = ({cartItems, updateItemQuantity, removeItem, setQuantity, items, quantity}) => {
 
   const [showCart, setShowCart] = useState(false);
   console.log('props passed to navbar: ' + cartItems)
@@ -41,7 +41,7 @@ const Navbar: React.FC<{cartItems: any, updateItemQuantity: any, setQuantity: Fu
 
       
       {showCart && (
-         <Cart cartItems={cartItems} setShowCart={setShowCart} updateItemQuantity={updateItemQuantity} items={items} setQuantity={setQuantity} quantity={quantity} />
+         <Cart cartItems={cartItems} setShowCart={setShowCart} updateItemQuantity={updateItemQuantity} removeItem={removeItem} items={items} setQuantity={setQuantity} quantity={quantity} />
       )}
       
         </>
