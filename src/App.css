@@ -200,6 +200,13 @@ section {
   cursor: pointer;
 }
 
+.cart-buttons {
+  padding: 1rem 0;
+}
+
+.cart-buttons button {
+  margin-right: 20px;
+}
 
 .btn-decrement {
   border-top-left-radius: 100px;
@@ -215,9 +222,24 @@ section {
   margin-top: 5px;
 }
 
-.product-card-price span,
-.cart-item span {
-  padding: 4px 12px;
+.product-card-price input,
+.cart-item input {
+  width: 35px;
+  text-align: center;
+  background-color: #1F2326;
+  color: #F5E1C8;
+  border: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .quantity-section {

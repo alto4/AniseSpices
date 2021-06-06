@@ -1,18 +1,38 @@
-import React from 'react';
-import items from '../data/Items';
+import React, { useState } from 'react';
 
 
-const Shop: React.FC<{addItem: Function}> = (props: any) => {
+interface Item {
+  id: number,
+  name: string,
+  price: number,
+  unit: string,
+  quantity: number,
+  imageURL: string,
+  description: string
+}
+
+const Shop: React.FC<{addItem: Function, setQuantity: Function, items: Array<Item>, quantity: number}> = ({addItem, setQuantity, items, quantity}) => {
   
-  let featuredItems = [items[0], items[1], items[2]]
+  const [shopItems, setShopItems] = useState(items);
+  const [itemQuantity, setItemQuantity] = useState(1)
+  let featuredItems = [shopItems[0], shopItems[1], shopItems[2]]
 
   const addItemToCart = (e: any) => {
     let id = e.currentTarget.getAttribute('data-id');
-    props.addItem(items[id - 1]);
+    addItem(items[id - 1]);
     console.log('CLICK! on item ' + items[id - 1].name)
   }
 
+  const updateItemQuantity = (e: any, value: number) => {
+    let id = e.currentTarget.getAttribute('data-id');
+    e.target.value = value;
+    let updatedItems = [...shopItems];
 
+    console.log('Updating quantity of item with data-id of ' + id + ' to ' + value + 'units')
+    console.log('Cart items before update:' + updatedItems[id - 1])
+    updatedItems[id - 1].quantity = value;
+    setShopItems(updatedItems);
+  }
 
   return (
     <section className="store-section">
@@ -29,9 +49,9 @@ const Shop: React.FC<{addItem: Function}> = (props: any) => {
             <div className="product-card-price">
               <p>Price: ${item.price} / {item.unit}</p>
               <div className="quantity-buttons">
-                <button className="btn-decrement">-</button>
-                <span>{item.quantity}</span>
-                <button className="btn-increment">+</button>
+                <button className="btn-decrement" data-id={item.id} onClick={(e) => {setItemQuantity(item.quantity - 1); updateItemQuantity(e, item.quantity -1);}}>-</button>
+                <input type="number" name="quantity" value={item.quantity} data-id={item.id} onChange={(e) => { setItemQuantity(Number.parseInt(e.target.value.toString())); updateItemQuantity(e, item.quantity);}}/> 
+                <button className="btn-increment" data-id={item.id} onClick={(e) => {setItemQuantity(item.quantity + 1); updateItemQuantity(e, item.quantity + 1);}}>+</button>
               </div> 
             </div>
              
@@ -45,16 +65,16 @@ const Shop: React.FC<{addItem: Function}> = (props: any) => {
 
         <h2>All</h2>
         <div className="items-container">
-          {items.map((item, index) => { return (      
+          {items.map((item: Item, index: number) => { return (      
           <div className="item-card">
             <h3>{item.name}</h3>
             <img src={item.imageURL} alt={item.description.split('.')[0] + '.'} />
             <div className="product-card-price">
               <p>Price: ${item.price} / {item.unit}</p>
               <div className="quantity-buttons">
-                <button className="btn-decrement">-</button>
-                <span>{item.quantity}</span>
-                <button className="btn-increment">+</button>
+                <button className="btn-decrement" data-id={item.id} onClick={(e) => {setQuantity(item.quantity - 1); updateItemQuantity(e, item.quantity);}}>-</button>
+                <input type="number" name="quantity" data-id={item.id} onChange={(e) => { setQuantity(Number.parseInt(e.target.value.toString())); updateItemQuantity(e, item.quantity);}}/> 
+                <button className="btn-increment" data-id={item.id} onClick={(e) => {setQuantity(item.quantity + 1); updateItemQuantity(e, item.quantity);}}>+</button>
               </div> 
             </div>
             <div className="buttons">
