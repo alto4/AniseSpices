@@ -18,9 +18,6 @@ const Navbar: React.FC<{cartItems: any, updateItemQuantity: any, removeItem: any
           <li>
             <Link to="/shop">Shop</Link>
           </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
         </ul>
 
         <h1>Anise Spice Market</h1>

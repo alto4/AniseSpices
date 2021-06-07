@@ -43,8 +43,10 @@ const App: React.FC = () => {
     let updatedCartItems = [...cartItems];
     let cartIndex = cartItems.findIndex((item: any) => item.id === Number.parseInt(id));
 
-    updatedCartItems[cartIndex].quantity = value;
-    setCartItems(updatedCartItems);
+    if(value > 0) {
+      updatedCartItems[cartIndex].quantity = value;
+      setCartItems(updatedCartItems);
+    }
   }
 
   return (

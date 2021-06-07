@@ -36,6 +36,7 @@ const Cart: React.FC<{cartItems: any, setShowCart: Function, updateItemQuantity:
           </div>
         )
       })}
+      <p>Cart Total: ${ cartItems.reduce((total: number, item: Item) => (total + (item.quantity * item.price)), 0).toFixed(2)} </p>
       <div className="cart-buttons">
         <button className="btn">Checkout</button>
         <button className="btn" onClick={() => {setShowCart(false)}}>Shop More</button>
