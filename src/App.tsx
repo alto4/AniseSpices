@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components//Home';
 import Shop from './components/Shop';
+import ShopItem from './components/ShopItem';
 import Contact from './components/Contact';
 import items from './data/Items';
 
@@ -55,6 +56,7 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/shop" render={() => {return <Shop addItem={addItem} items={items} quantity={quantity} setQuantity={setQuantity}/>}} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/shop/:id" component={ShopItem}  />
         <Route path="/" component={Home} />
       </Switch>
     </Router>

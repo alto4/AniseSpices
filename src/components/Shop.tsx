@@ -57,7 +57,7 @@ const Shop: React.FC<{addItem: Function, setQuantity: Function, items: Array<Ite
              
             <div className="buttons">
               <button className="btn btn-block" data-id={item.id} onClick={addItemToCart}><i className="fa fa-shopping-cart" ></i> Add</button>
-              <button className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</button>
+              <Link to={'shop/' + item.id} className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</Link>
             </div>
           </div>)
           })}       
@@ -79,7 +79,7 @@ const Shop: React.FC<{addItem: Function, setQuantity: Function, items: Array<Ite
             </div>
             <div className="buttons">
               <button className="btn btn-block" data-id={item.id} onClick={addItemToCart}><i className="fa fa-shopping-cart"></i> Add</button>
-              <button className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</button>
+              <Link to={'shop/' + item.id} className="btn btn-block"><i className="fa fa-list" data-id={item.id}></i> Details</Link>
             </div>
           </div>)
           })}       
