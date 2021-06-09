@@ -1,7 +1,8 @@
-import Navbar from './components/Navbar';
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './components//Home';
 import Shop from './components/Shop';
 import ShopItem from './components/ShopItem';
@@ -36,8 +37,6 @@ const App: React.FC = () => {
     setCartItems(updatedCartItems);
   }
 
-
-
   const updateItemQuantity = (e: any, value: number) => {
     let id = e.currentTarget.getAttribute('data-id');
     e.target.value = value;
@@ -59,6 +58,7 @@ const App: React.FC = () => {
         <Route exact path="/shop/:id" component={ShopItem}  />
         <Route path="/" component={Home} />
       </Switch>
+      <Footer />
     </Router>
   ) 
   ;

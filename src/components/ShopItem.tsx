@@ -8,12 +8,19 @@ const ShopItem: React.FC <{id: any} > = (props: any) => {
   const item = items[itemIndex];
 
   return (
-    <div>
-     <h1>{item.name}</h1>
-     <img src={item.imageURL} alt={item.description.split('.')[0]} />
-     <p>{item.description}</p>
-    
-    </div>
+    <section className="item-section">
+      <div className="container">
+     
+      <div className="item-details">
+        <img src={item.imageURL} alt={item.description.split('.')[0]} />
+        <div className="item-text">
+         <h1>{item.name}</h1>
+         <p>{item.description}</p>
+       </div>
+      </div>
+        
+      </div>   
+    </section>
     
   )
 }

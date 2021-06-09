@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Work Sans', sans-serif;
-  background: #1F2326;
+  background: #111;
    color: #F5E1C8;
 }
 
@@ -139,6 +139,7 @@ section {
 .store-section {
   background: #111;
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .store-section h1 {
@@ -171,6 +172,7 @@ section {
   padding: 15px 0;
   border-bottom: 1px solid #eee
 }
+
 .cart-item p {
   font-size: .9rem;
 }
@@ -269,4 +271,44 @@ input[type=number] {
   color: #F5E1C8;
   border: none;
   border-radius: 100%;
+}
+
+.about-section {
+  background-color: #111;
+  padding: 80px;
+}
+
+.item-section .item-details,
+.about-section .container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.item-section .item-text,
+.about-section .about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-section img {
+  height: 500px;
+  margin: auto;
+}
+
+.item-section img {
+  object-fit: cover;
+  width: 500px;
+  height: 400px;
+}
+
+.item-section {
+  padding: 100px;
+}
+
+footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  background-color: #111;
 }
